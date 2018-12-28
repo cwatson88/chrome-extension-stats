@@ -25,27 +25,29 @@ var options = {
   form: {}
 };
 
-module.exports.getExtensions = () => new Promise((resolve, reject) => {
-  try {
-    request(options, function(error, response, body) {
-      if (error) throw new Error(error);
+module.exports.getExtensions = ({ searchTerm }) =>
+  new Promise((resolve, reject) => {
+    try {
+      options.qs.searchTerm = searchTerm;
+      request(options, function(error, response, body) {
+        if (error) throw new Error(error);
 
-      const result = body
-        .toString()
-        .substring(4)
-        .trim();
+        const result = body
+          .toString()
+          .substring(4)
+          .trim();
 
-      fs.writeFile("./res.json", result, err => {
-        if (err) {
-          console.error(err);
-          return;
-        } else {
-          console.log("success! 👾");
-          resolve()
-        }
+        fs.writeFile("./res.json", result, err => {
+          if (err) {
+            console.error(err);
+            return;
+          } else {
+            console.log("success! 👾");
+            resolve();
+          }
+        });
       });
-    });
-  } catch (err) {
-    reject(err);
-  }
-});
+    } catch (err) {
+      reject(err);
+    }
+  });
