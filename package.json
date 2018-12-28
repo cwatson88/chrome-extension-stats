@@ -1,0 +1,18 @@
+{
+  "name": "chrome-extension-list",
+  "version": "1.0.0",
+  "description": "A better way to organise and sort Extensions from the Chrome Web Store.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "TBC"
+  },
+  "author": "cwatson88",
+  "license": "GPL",
+  "dependencies": {
+    "puppeteer": "^1.11.0"
+  }
+}
